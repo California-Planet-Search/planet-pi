@@ -13,7 +13,7 @@ informative_per_prior = False # include A Vandenburg's informative period prior
 informative_per_prior_with_dur = False # same as above, but assume event duration is 2015-mid-2018 (3.5yrs)
 fit_recentpoints_only = False # do a fit to only data taken after 2017
 vary_dvdt = False # include a trend
-longP = False # enforce a 200 yr period to show that likelihood is lower
+longP = True # enforce a 200 yr period to show that likelihood is lower
 """
 """
 
@@ -30,8 +30,8 @@ bjd0 = 2440000.
 stellar = dict(mstar=1.16, mstar_err=.12)
 
 # load in data
-data_cps = pd.read_csv('~/Dropbox/120066_radvel/data/120066.txt')
-data_mcd = pd.read_csv('~/Dropbox/120066_radvel/data/HD120066_McD.ALL',
+data_cps = pd.read_csv('~/Dropbox/planet-pi/data/120066.txt')
+data_mcd = pd.read_csv('~/Dropbox/planet-pi/data/HD120066_McD.ALL',
 	names=['time','mnvel','errvel', 'SVAL','sval_err'], header=None,sep='\s+'
 )
 data_mcd['tel']='m'
