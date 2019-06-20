@@ -1,5 +1,8 @@
 # Manually added
 OLD/
+search/
+*.bz2
+*.hdf5
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
