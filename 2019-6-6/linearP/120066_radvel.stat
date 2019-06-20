@@ -1,0 +1,17 @@
+[fit]
+run = True
+postfile = 2019-6-6/linearP/120066_post_obj.pkl
+
+[mcmc]
+summaryfile = 2019-6-6/linearP/120066_post_summary.csv
+nsteps = 4000000
+run = True
+maxgr = 1.0187191580413717
+nensembles = 8
+nburn = 420000
+nwalkers = 50
+maxsteps = 4000000.0
+postfile = 2019-6-6/linearP/120066_post_obj.pkl
+chainfile = 2019-6-6/linearP/120066_chains.csv.tar.bz2
+mintz = 1537.8326504697598
+

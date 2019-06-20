@@ -1,0 +1,17 @@
+[fit]
+postfile = 2019-6-6/logP/120066_post_obj.pkl
+run = True
+
+[mcmc]
+nburn = 420000
+maxsteps = 4000000.0
+summaryfile = 2019-6-6/logP/120066_post_summary.csv
+maxgr = 1.0072540196260598
+nsteps = 4000000
+postfile = 2019-6-6/logP/120066_post_obj.pkl
+nwalkers = 50
+run = True
+chainfile = 2019-6-6/logP/120066_chains.csv.tar.bz2
+nensembles = 8
+mintz = 3901.380746991302
+

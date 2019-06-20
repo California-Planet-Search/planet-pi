@@ -1,0 +1,20 @@
+[fit]
+postfile = 2019-6-6/master/120066_post_obj.pkl
+run = True
+
+[plot]
+rv_plot = 2019-6-6/master/120066_rv_multipanel.pdf
+
+[mcmc]
+maxgr = 1.0018168384312784
+maxsteps = 4000000.0
+chainfile = 2019-6-6/master/120066_chains.csv.tar.bz2
+nensembles = 8
+summaryfile = 2019-6-6/master/120066_post_summary.csv
+nburn = 420000
+nsteps = 4000000
+nwalkers = 50
+run = True
+mintz = 15443.910538038343
+postfile = 2019-6-6/master/120066_post_obj.pkl
+
