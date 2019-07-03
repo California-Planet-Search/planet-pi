@@ -99,11 +99,12 @@ longp.loc[longp.disc_authorstring=="\citep{Qian2010}",'notes'] = 'Binary star'
 #### Make some nice plots! 
 
 import itertools
-marker = itertools.cycle(['o', '^','d', 'P', '*', 'v','p','H',"<",">"]) 
+marker = itertools.cycle(['o', '^','d', 'P', 's', 'v','p','H',"<",">"]) 
 #color = itertools.cycle
 
 ### Plot 1: msini vs. zemimajor axis ###
 
+counter = 0
 for meth in discmeths:
     planets = nea[nea.pl_discmethod==meth]
     planets = planets.dropna(subset=['pl_orbsmax','pl_bmassj'])
@@ -112,19 +113,23 @@ for meth in discmeths:
     if meth == 'Transit' or meth == 'Radial Velocity':
         planets = planets[planets['pl_orbper']/planets['pl_orbpererr1'] > 3.]
     print meth, len(planets)
+    color = 'C{}'.format(counter)
     if len(planets) > 3:
+        counter += 1
+        if counter == 3:
+            counter += 1
         plt.scatter(#planets.pl_orbsmax,
                  planets.pl_orbsmax,
                  planets.pl_bmassj,
 #                 xerr=planets.pl_orbsmaxerr1,
 #                 yerr=planets.pl_bmassjerr1,fmt='o',
                  label = meth,
-                 marker = marker.next())
-#                 color=color,
+                 marker = marker.next(),
+                color=color)
 
 # plt.xlim([1,1e7])
 plt.ylim([2e-3,20])
-plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='s',color='k',label='HR 5183 b')#,s=50)
+plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='*',color='C3',label='HR 5183 b',markersize=10)
 plt.yscale('log')
 plt.xscale('log')
 plt.xlabel('Semi-major Axis [AU]')
@@ -150,7 +155,7 @@ for meth in discmeths:
 #                 yerr=planets.pl_bmassjerr1,fmt='o',
                  label = meth,
                  marker = marker.next())
-#                 color=color,
+                 # color=color)
 plt.xlim([1,1e7])
 plt.ylim([0,1])
 plt.errorbar(hd12.pl_orbper,hd12.pl_orbeccen,hd12.pl_orbeccen_unc,hd12.pl_orbper_unc, marker='s',color='k',label='HR 5183 b')#,s=50)
