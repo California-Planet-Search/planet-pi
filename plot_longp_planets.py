@@ -4,7 +4,7 @@ from numpy import nan
 import os.path
 
 """
-Written by Lauren Weiss, 2018
+Written by Lauren Weiss, 2018. Edited a bit by Sarah.
 """
 
 
@@ -25,14 +25,14 @@ def reformat_author_string(string_list): # useful for making citations
 nea = pd.read_csv('data/planets.csv',skiprows=73)
 discmeths = pd.unique(nea.pl_discmethod)
 hd12_dict = {"pl_hostname":["HR 5183 b"],
-                     "pl_orbper":72*365.25,
-                     "pl_orbper_unc":30*365.25,
+                     "pl_orbper":73*365.25,
+                     "pl_orbper_unc":14*365.25,
                      "pl_bmassj":3.23, # Mjup
-                     "pl_bmassj_unc":0.14,
+                     "pl_bmassj_unc":0.17,
                      "pl_orbsmax":18, # AU
-                     "pl_orbsmax_unc":5,
+                     "pl_orbsmax_unc":2,
                      "pl_orbeccen": 0.83,
-                     "pl_orbeccen_unc":0.04,
+                     "pl_orbeccen_unc":0.02,
                      "K":"\semiamp", # m/s
                      "pl_discmethod":"Radial Velocity",
                      "disc_authorstring":'This paper',
@@ -107,6 +107,10 @@ marker = itertools.cycle(['o', '^','d', 'P', '*', 'v','p','H',"<",">"])
 for meth in discmeths:
     planets = nea[nea.pl_discmethod==meth]
     planets = planets.dropna(subset=['pl_orbsmax','pl_bmassj'])
+
+    # remove planets with large period uncertainty
+    if meth == 'Transit' or meth == 'Radial Velocity':
+        planets = planets[planets['pl_orbper']/planets['pl_orbpererr1'] > 3.]
     print meth, len(planets)
     if len(planets) > 3:
         plt.scatter(#planets.pl_orbsmax,
@@ -117,6 +121,7 @@ for meth in discmeths:
                  label = meth,
                  marker = marker.next())
 #                 color=color,
+
 # plt.xlim([1,1e7])
 plt.ylim([2e-3,20])
 plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='s',color='k',label='HR 5183 b')#,s=50)

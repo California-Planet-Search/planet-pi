@@ -110,34 +110,41 @@ gs = gridspec.GridSpec(4,1, figure=fig)
 plt.rcParams.update({'font.size': 12})
 bins = 200
 color = 'grey'
+color2 = 'red'
 
 ax0 = plt.subplot(gs[0])
 max_a = 205
-ax0.hist(a_au.value[e<1]/1e3, bins=bins, range=(0,max_a), color=color)
-ax0.set_xlim(0,max_a)
+ax0.hist(a_au.value[e<1]/1e3, bins=bins, range=(0,max_a), color=color, alpha=0.5, density=True)
+ax0.hist(a_au.value/1e3, bins=bins, range=(-max_a,max_a), color=color2, histtype='step', density=True)
+ax0.set_xlim(-max_a,max_a)
 ax0.set_yticks([])
 ax0.set_xlabel('a [x10$^{3}$ au]')
 
 ax1 = plt.subplot(gs[1])
-ax1.hist(e.value[e<1], bins=bins, color=color)
+ax1.hist(e.value[e<1], bins=bins, color=color, alpha=0.5, density=True)
+ax1.hist(e.value, bins=bins, range=(0,4), color=color2, histtype='step', density=True)
 ax1.set_yticks([])
 ax1.set_xlabel('e')
+ax1.set_xlim(0,4)
 
 ax2 = plt.subplot(gs[2])
-ax2.hist(i.value[e<1], bins=bins, color=color)
+ax2.hist(i.value[e<1], bins=bins, color=color, alpha=0.5, density=True)
+ax2.hist(i.value, bins=bins, color=color2, histtype='step', density=True)
 ax2.set_yticks([])
 ax2.set_xlim(50,150)
 ax2.set_xlabel('inc [$^{\circ}$]')
 
 ax3 = plt.subplot(gs[3])
-n, bins, _ = ax3.hist(a_au.value[e<1]*(1-e.value[e<1])/1e3, bins=bins, color=color)
+n, bins, _ = ax3.hist(a_au.value[e<1]*(1-e.value[e<1])/1e3, bins=bins, color=color, alpha=0.5, density=True, label='bound only')
+ax3.hist(a_au.value*(1-e.value)/1e3, bins=bins, color=color2, histtype='step', density=True, label='bound and hyperbolic')
 ax3.set_yticks([])
 ax3.set_xlabel('a(1-e) [x10$^{3}$ au]')
 max_minsep = 50
 ax3.set_xlim(0,max_minsep)
+ax3.legend()
 
-print('Peak of the a(1-e) histogram occurs at {} au.'.format(1e3*bins[np.argmax(n)]))
-print('Median of the a(1-e) histogram occurs at {} au.'.format(
+print('Peak of the a(1-e) histogram for bound orbits occurs at {} au.'.format(bins[np.argmax(n)]*1e3))
+print('Median of the a(1-e) histogram for bound orbits occurs at {} au.'.format(
 	np.median(a_au.value[e<1]*(1-e.value[e<1]))
 ))
 
@@ -147,5 +154,4 @@ plt.savefig(
 	'{}/Dropbox/Apps/Overleaf/120066/plots/wide_companion.png'.format(os.path.expanduser('~')),
 	dpi=250
 )
-
 

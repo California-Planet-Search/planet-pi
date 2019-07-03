@@ -13,7 +13,8 @@ informative_per_prior = False # include A Vandenburg's informative period prior
 informative_per_prior_with_dur = False # same as above, but assume event duration is 2015-mid-2018 (3.5yrs)
 fit_recentpoints_only = False # do a fit to only data taken after 2017
 vary_dvdt = False # include a trend
-longP = True # enforce a 200 yr period to show that likelihood is lower
+longP = False # enforce a 200 yr period to show that likelihood is worse
+fixP = True # fix period
 """
 """
 
@@ -50,7 +51,7 @@ def initialize_params():
     if longP:
         params['per1'] = radvel.Parameter(value=200.*365.)
     else:
-        params['per1'] = radvel.Parameter(value=21860.)
+        params['per1'] = radvel.Parameter(value=25962.)
     params['tp1'] = radvel.Parameter(value=18134.)
     params['e1'] = radvel.Parameter(value=0.84)
     params['w1'] = radvel.Parameter(value=-0.26)
@@ -62,6 +63,9 @@ def initialize_params():
     params = params.basis.to_any_basis(params,fitting_basis)
 
     if longP:
+        params['logper1'].vary = False
+
+    if fixP:
         params['logper1'].vary = False
     
     return params
