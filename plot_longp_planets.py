@@ -129,7 +129,7 @@ for meth in discmeths:
 
 # plt.xlim([1,1e7])
 plt.ylim([2e-3,20])
-plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='*',color='C3',label='HR 5183 b',markersize=10)
+plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='*',color='C3',label='HR 5183 b',markersize=20)
 plt.yscale('log')
 plt.xscale('log')
 plt.xlabel('Semi-major Axis [AU]')
