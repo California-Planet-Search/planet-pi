@@ -111,7 +111,7 @@ for meth in discmeths:
 
     # remove planets with large period uncertainty
     if meth == 'Transit' or meth == 'Radial Velocity':
-        planets = planets[planets['pl_orbper']/planets['pl_orbpererr1'] > 3.]
+        planets = planets[planets['pl_orbper']/planets['pl_orbpererr1'] > 1.5]
     print meth, len(planets)
     color = 'C{}'.format(counter)
     if len(planets) > 3:
@@ -125,11 +125,11 @@ for meth in discmeths:
 #                 yerr=planets.pl_bmassjerr1,fmt='o',
                  label = meth,
                  marker = marker.next(),
-                color=color)
+                color=color, s=20)
 
 # plt.xlim([1,1e7])
 plt.ylim([2e-3,20])
-plt.errorbar(hd12.pl_orbsmax,hd12.pl_bmassj,hd12.pl_bmassj_unc,hd12.pl_orbsmax_unc, marker='*',color='C3',label='HR 5183 b',markersize=20)
+plt.scatter(hd12.pl_orbsmax,hd12.pl_bmassj, marker='*',color='C3',label='HR 5183 b',s=250)
 plt.yscale('log')
 plt.xscale('log')
 plt.xlabel('Semi-major Axis [AU]')

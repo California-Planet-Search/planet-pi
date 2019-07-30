@@ -3,15 +3,15 @@ postfile = 2019-6-6/recent_only/120066_post_obj.pkl
 run = True
 
 [mcmc]
-mintz = 1849.8700456728739
+mintz = 3786.829860839826
 run = True
 nensembles = 8
 nwalkers = 50
 summaryfile = 2019-6-6/recent_only/120066_post_summary.csv
-maxsteps = 4000000.0
+maxsteps = 8000000.0
 nburn = 420000
 chainfile = 2019-6-6/recent_only/120066_chains.csv.tar.bz2
-nsteps = 4000000
-maxgr = 1.0154876260156076
+nsteps = 8000000
+maxgr = 1.0074765476643412
 postfile = 2019-6-6/recent_only/120066_post_obj.pkl
 

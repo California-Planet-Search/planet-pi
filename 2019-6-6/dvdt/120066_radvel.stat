@@ -3,15 +3,15 @@ run = True
 postfile = 2019-6-6/dvdt/120066_post_obj.pkl
 
 [mcmc]
-maxgr = 1.005119645646612
+maxgr = 1.0015755458212718
 summaryfile = 2019-6-6/dvdt/120066_post_summary.csv
-mintz = 5509.964830572434
+mintz = 17807.670280333063
 postfile = 2019-6-6/dvdt/120066_post_obj.pkl
 nwalkers = 50
-nsteps = 4000000
+nsteps = 8000000
 run = True
 nburn = 420000
 chainfile = 2019-6-6/dvdt/120066_chains.csv.tar.bz2
-maxsteps = 4000000.0
+maxsteps = 8000000.0
 nensembles = 8
 

@@ -1,0 +1,17 @@
+[fit]
+run = True
+postfile = results/dvdt/120066_post_obj.pkl
+
+[mcmc]
+run = True
+postfile = results/dvdt/120066_post_obj.pkl
+chainfile = results/dvdt/120066_chains.csv.tar.bz2
+summaryfile = results/dvdt/120066_post_summary.csv
+nwalkers = 50
+nensembles = 8
+maxsteps = 40000000.0
+nsteps = 11920000
+nburn = 420000
+mintz = 29198.80818209778
+maxgr = 1.0009599766558213
+

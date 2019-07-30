@@ -1,0 +1,17 @@
+[fit]
+run = True
+postfile = results/linearP/120066_post_obj.pkl
+
+[mcmc]
+run = True
+postfile = results/linearP/120066_post_obj.pkl
+chainfile = results/linearP/120066_chains.csv.tar.bz2
+summaryfile = results/linearP/120066_post_summary.csv
+nwalkers = 50
+nensembles = 8
+maxsteps = 40000000.0
+nsteps = 40000000
+nburn = 420000
+mintz = 5784.577358287953
+maxgr = 1.0048757867917408
+

@@ -15,18 +15,32 @@ Reference: Sect 3.4 of Jack Wisdom's Lecture Notes for MIT Class 12.603, Spring 
 num_samples = int(1e7)
 
 # params from Gaia archive, accessed Dec 2018
-par_1 = np.random.normal(31.75676467890995,0.03904992068059236, size=num_samples)*u.mas
-par_2 = np.random.normal(31.916619970689208,0.04588075116786399, size=num_samples)*u.mas
+par_1_unc = 0.03904992068059236
+par_2_unc = 0.04588075116786399
+
+par_1 = np.random.normal(31.75676467890995,par_1_unc, size=num_samples)*u.mas
+par_2 = np.random.normal(31.916619970689208,par_2_unc, size=num_samples)*u.mas
 ra1 = np.random.normal(206.73579924515266,0.034181020450823614*mas2deg, size=num_samples)*u.deg.to('', equivalencies=u.dimensionless_angles())
 ra2 = np.random.normal(206.86779239249455,0.041854907527526505*mas2deg, size=num_samples)*u.deg.to('', equivalencies=u.dimensionless_angles())
 dec1 = np.random.normal(6.349899363461747,0.029049724029680198*mas2deg, size=num_samples)*u.deg.to('', equivalencies=u.dimensionless_angles())
 dec2 = np.random.normal(6.315179418424761,0.027597433308644042*mas2deg, size=num_samples)*u.deg.to('', equivalencies=u.dimensionless_angles())
-pmra1 = np.random.normal(-510.4469988734486,0.07061308080526092, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
-pmra2 = np.random.normal(-509.44024258805166,0.0833659380642554, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
-pmdec1 = np.random.normal(-110.22479327853173,0.06383967745385508, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
-pmdec2 = np.random.normal(-111.02152731289831,0.06053443317129055, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
-rv1 = np.random.normal(-30.41781739548299,0.19533398113754827, size=num_samples)*u.kilometer/u.second
-rv2 = np.random.normal(-30.668597020721364,0.1500618955235784, size=num_samples)*u.kilometer/u.second
+
+pmra1_unc = 0.07061308080526092
+pmra2_unc = 0.0833659380642554
+pmra1 = np.random.normal(-510.4469988734486,pmra1_unc, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
+pmra2 = np.random.normal(-509.44024258805166,pmra2_unc, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
+
+
+pmdec1_unc = 0.06383967745385508
+pmdec2_unc = 0.06053443317129055
+pmdec1 = np.random.normal(-110.22479327853173,pmdec1_unc, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
+pmdec2 = np.random.normal(-111.02152731289831,pmdec2_unc, size=num_samples)*u.mas.to('', equivalencies=u.dimensionless_angles())/u.yr
+
+
+rv1_unc = 0.19533398113754827
+rv2_unc = 0.1500618955235784
+rv1 = np.random.normal(-30.41781739548299,rv1_unc, size=num_samples)*u.kilometer/u.second
+rv2 = np.random.normal(-30.668597020721364,rv2_unc, size=num_samples)*u.kilometer/u.second
 
 # params from isochrones & specmatch-Gaia analysis
 m1 = np.random.normal(1.07,0.04, size=num_samples)*u.M_sun
