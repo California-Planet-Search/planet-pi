@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 import radvel
 
-# radvel fit -s 120066.py -d results/master
-# radvel mcmc -s 120066.py -d results/master --maxGR 1.001 --minsteps 1000 --nsteps 100000 --minpercent 100 --thin 25
+# export DATE="2023-11-7"; mkdir $DATE
+# radvel fit -s 120066.py -d $DATE/main
+# radvel mcmc -s 120066.py -d $DATE/main --maxGR 1.001 --minsteps 1000 --nsteps 100000 --minpercent 100 --thin 25
 
 """
 "keywords"
